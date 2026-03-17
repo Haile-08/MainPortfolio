@@ -44,6 +44,21 @@ const categories: SkillCategory[] = [
       'Continuous Learner',
     ],
   },
+  {
+    label: 'Category 06',
+    number: '06',
+    title: 'Tools',
+    items: [
+      'Figma',
+      'Miro',
+      'Antigravity',
+      'Google Stitch (Beta)',
+      'Claude AI',
+      'v0',
+      'Gemini',
+      'Notion',
+    ],
+  },
 ];
 
 const cardVariants = {
@@ -80,7 +95,7 @@ export default function Skills() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
           {categories.map((cat, i) => (
             <motion.div
               key={cat.title}

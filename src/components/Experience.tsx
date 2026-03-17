@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import resumeFile from '../assets/resume.pdf';
 
 interface ExperienceEntry {
   period: string;
@@ -96,6 +97,24 @@ export default function Experience() {
               Building high-performance digital systems, leading engineering teams, and scaling products from zero to
               production.
             </p>
+          </motion.div>
+
+          <motion.div
+            className="flex flex-col items-start md:items-end"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            <a
+              href={resumeFile}
+              download="Haile_Resume.pdf"
+              className="group flex items-center gap-3 bg-neutral-dark text-white px-6 py-4 rounded-full text-sm font-medium hover:bg-gray-800 transition-all"
+            >
+              <span className="material-symbols-outlined text-xl">download</span>
+              Download Resume
+            </a>
+            <span className="text-[10px] uppercase tracking-widest text-gray-400 mt-3 mr-2">PDF VERSION (2.4MB)</span>
           </motion.div>
         </div>
 

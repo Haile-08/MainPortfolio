@@ -6,6 +6,8 @@ interface Project {
   year: string;
   bullets: string[];
   tech: string[];
+  github?: string;
+  demo?: string;
 }
 
 const projects: Project[] = [
@@ -18,6 +20,8 @@ const projects: Project[] = [
       'Architected a community-driven platform that enables movie enthusiasts to publish, share, and engage with film reviews and opinions.',
     ],
     tech: ['Laravel', 'Vue.js', 'Inertia.js', 'MySQL'],
+    demo: 'https://ourtakeone.onrender.com/',
+    github: 'https://github.com/Haile-08/TheReviewBar',
   },
   {
     title: 'AirBnB Clone',
@@ -29,6 +33,7 @@ const projects: Project[] = [
       'Developed and delivered this application as a core software engineering project during training at Holberton School.',
     ],
     tech: ['Python', 'Flask', 'CSS', 'MySQL'],
+    github: 'https://github.com/Haile-08/AirBnB_clone',
   },
 ];
 
@@ -107,6 +112,35 @@ export default function Projects() {
                     ))}
                   </div>
                 </div>
+              </div>
+
+              <div className="flex items-center gap-6 mt-auto pt-6 border-t border-gray-50">
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold hover:opacity-50 transition-opacity uppercase tracking-widest flex items-center gap-2"
+                  >
+                    Demo
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                    </svg>
+                  </a>
+                )}
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold hover:opacity-50 transition-opacity uppercase tracking-widest flex items-center gap-2"
+                  >
+                    GitHub
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                    </svg>
+                  </a>
+                )}
               </div>
             </motion.article>
           ))}
