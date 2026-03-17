@@ -23,25 +23,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          {/* Stats */}
-          <div className="flex space-x-16 mb-16 pt-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-            >
-              <span className="block text-4xl font-light">+200</span>
-              <span className="text-[11px] uppercase tracking-wider text-gray-500">Project completed</span>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              <span className="block text-4xl font-light">+50</span>
-              <span className="text-[11px] uppercase tracking-wider text-gray-500">Startup raised</span>
-            </motion.div>
-          </div>
+
 
           {/* Heading */}
           <div className="mb-8">

@@ -33,11 +33,7 @@ export default function About() {
           >
             <div className="h-px w-24 bg-black" />
             <div className="flex flex-col">
-              <span className="text-3xl font-light">1st</span>
-              <span className="text-[9px] uppercase tracking-widest text-gray-500 font-bold">Startup Exit</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-3xl font-light">22</span>
+              <span className="text-3xl font-light">27</span>
               <span className="text-[9px] uppercase tracking-widest text-gray-500 font-bold">Years of Age</span>
             </div>
           </motion.div>
