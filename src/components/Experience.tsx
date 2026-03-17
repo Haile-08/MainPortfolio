@@ -1,0 +1,167 @@
+import { motion } from 'framer-motion';
+
+interface ExperienceEntry {
+  period: string;
+  title: string;
+  company: string;
+  location: string;
+  link?: string;
+  bullets: string[];
+}
+
+const experiences: ExperienceEntry[] = [
+  {
+    period: '2025 — Present',
+    title: 'Full Stack Software Engineer',
+    company: 'Atend SaaS Startup',
+    location: 'Mexico | Remote',
+    link: 'https://cuidado.atend.mx/',
+    bullets: [
+      'Architected and developed a multi-tenant healthcare SaaS platform from the ground up, designing the UI in Figma and building the frontend in React.js to allow diverse organizations to customize branding and toggle features.',
+      'Engineered an offline-first Flutter mobile app (iOS/Android) for nurses operating in low-connectivity areas, featuring automated background syncing and offline location tracking to ensure uninterrupted patient care.',
+      'Designed a robust Express.js backend and optimized MySQL database, implementing custom stored procedures and indexes to handle complex data relationships efficiently.',
+      'Built a dynamic intervention scheduling system that automatically calculated nurse availability and blocked booked time slots/areas in real-time.',
+      'Integrated Stripe Connect to enable seamless, tenant-specific payment processing across the platform.',
+      'Established zero-downtime CI/CD deployment pipelines on a DigitalOcean VPS using Nginx as a reverse proxy, ensuring continuous availability for users.',
+      'Standardized development workflows by implementing Git Flow for environment separation (dev, main, releases), writing comprehensive automated tests, and authoring full system documentation.',
+      'Thrived in a fast-paced, customer-first environment, rapidly adapting to shifting requirements to deliver high-priority features on strict deadlines.',
+    ],
+  },
+  {
+    period: '04/2025 — 07/2025',
+    title: 'Founder',
+    company: 'Redjebena Startup',
+    location: 'Addis Ababa, Ethiopia | ALX Accelerator',
+    link: 'http://redjebena.et/',
+    bullets: [
+      'Founded and developed Redjebena, securing a spot in the ALX Accelerator from a pool of 400 startups.',
+      'Directed the product development lifecycle, overseeing 2 engineers to build and deploy the MVP within a 3-month deadline.',
+      'Defined the go-to-market strategy alongside a dedicated sales representative, resulting in the acquisition of 22 initial users.',
+      'Presented product vision and technical roadmap to investors at a high-stakes Demo Day.',
+    ],
+  },
+  {
+    period: '12/2023 — 08/2024',
+    title: 'Full Stack Developer',
+    company: 'Gig Work',
+    location: 'Addis Ababa, Ethiopia',
+    bullets: [
+      'Developed a full-stack e-commerce gift shop utilizing the MERN stack (MongoDB, Express.js, React, Node.js), handling both frontend UI and backend logic.',
+      'Engineered secure transaction flows by integrating local Ethiopian payment gateways, specifically Chapa and Telebirr, across multiple client applications.',
+      'Built interactive frontend components for a gaming platform using React, successfully cloning the UI and game logic for "Dragon Tower" and "Crash" to meet precise client specifications.',
+    ],
+  },
+];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' as const },
+  },
+};
+
+export default function Experience() {
+  return (
+    <section id="experience" className="relative min-h-screen px-6 md:px-24 pt-32 pb-24 bg-abstract-gradient">
+      {/* Sidebar */}
+      <aside className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center justify-between h-3/4 py-12 text-[10px] uppercase tracking-[0.3em] text-gray-400">
+        <div className="vertical-text">Professional Path</div>
+        <div className="h-24 w-px bg-gray-200" />
+        <div className="vertical-text">Curriculum Vitae</div>
+      </aside>
+
+      <div className="max-w-5xl mx-auto relative">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
+          <motion.div
+            className="max-w-2xl"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <h1 className="section-heading font-light mb-6">Experience</h1>
+            <p className="text-xl md:text-2xl font-light text-gray-600 leading-relaxed">
+              Building high-performance digital systems, leading engineering teams, and scaling products from zero to
+              production.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Timeline */}
+        <motion.div
+          className="relative pl-8 md:pl-16"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <div className="timeline-line" />
+
+          {experiences.map((exp, i) => (
+            <motion.div key={i} className="relative mb-24 last:mb-0" variants={itemVariants}>
+              {/* Dot */}
+              <div className="absolute -left-8 md:-left-16 w-3 h-3 bg-white border border-neutral-dark rounded-full mt-2 -ml-[5.5px] z-10" style={{ borderColor: '#1a1a1a' }} />
+
+              {/* Date & Title */}
+              <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 mb-4">
+                <span className="text-sm font-semibold tracking-tighter text-gray-400 uppercase">{exp.period}</span>
+                <h3 className="text-3xl font-light">{exp.title}</h3>
+              </div>
+
+              {/* Company info */}
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <span className="text-lg text-gray-600">{exp.company}</span>
+                <span className="text-gray-300">·</span>
+                <span className="text-sm text-gray-500">{exp.location}</span>
+                {exp.link && (
+                  <>
+                    <span className="text-gray-300">·</span>
+                    <a
+                      href={exp.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-gray-500 underline hover:text-black transition-colors"
+                    >
+                      Visit →
+                    </a>
+                  </>
+                )}
+              </div>
+
+              {/* Bullets */}
+              <ul className="space-y-4 text-gray-500">
+                {exp.bullets.map((bullet, j) => (
+                  <li key={j} className="flex items-start gap-4">
+                    <span className="w-1.5 h-1.5 bg-gray-300 rounded-full mt-2 flex-shrink-0" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Background decorative circle */}
+      <div className="absolute right-0 bottom-0 opacity-[0.03] pointer-events-none -mr-32 -mb-32">
+        <div className="relative w-[600px] h-[600px]">
+          <div className="absolute inset-0 border border-gray-900 rounded-full" />
+          <div className="absolute inset-20 border border-gray-900 rounded-full" />
+          <div className="absolute inset-40 border border-gray-900 rounded-full" />
+        </div>
+      </div>
+    </section>
+  );
+}
