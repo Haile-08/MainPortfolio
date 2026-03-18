@@ -32,9 +32,14 @@ export default function Navbar() {
       }`}
     >
       <div className="logo-container">
-        <span className="text-xl md:text-2xl font-medium tracking-tight" style={{ letterSpacing: '-0.02em' }}>
+        <a
+          href="#hero"
+          onClick={(e) => handleClick(e, '#hero')}
+          className="text-xl md:text-2xl font-medium tracking-tight hover:opacity-60 transition-opacity cursor-pointer"
+          style={{ letterSpacing: '-0.02em' }}
+        >
           Haile
-        </span>
+        </a>
       </div>
 
       {/* Desktop Nav */}

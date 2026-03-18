@@ -5,7 +5,7 @@ interface EducationEntry {
   degree: string;
   period: string;
   location: string;
-  link: string;
+  links: { label: string; url: string }[];
   certificate?: string;
   description: string[];
   tags: string[];
@@ -17,7 +17,7 @@ const entries: EducationEntry[] = [
     degree: 'B.Sc. in Computer Science and Engineering',
     period: '2018 — 2023',
     location: 'Kebele 14 Adama, Ethiopia',
-    link: 'https://www.astu.edu.et/',
+    links: [{ label: 'ASTU', url: 'https://www.astu.edu.et/' }],
     description: [
       'Graduated from one of only two dedicated Science & Technology universities in Ethiopia, consistently ranked in the national top 10.',
       'Honed technical skills in a rigorous academic environment known for hosting elite national programming championships and driving tech innovation.',
@@ -30,7 +30,10 @@ const entries: EducationEntry[] = [
     degree: 'Software Engineering Program',
     period: '08/2022 — 08/2023',
     location: 'Remote',
-    link: 'https://hbtn.dev/',
+    links: [
+      { label: 'ALX Africa', url: 'https://www.alxafrica.com/' },
+      { label: 'Holberton School', url: 'https://hbtn.dev/' },
+    ],
     certificate: 'https://savanna.alxafrica.com/certificates/8EPRBpxXr7',
     description: [
       'Completed an intensive, 12-month project-based engineering program requiring 70+ hours a week of coding, debugging, and peer-to-peer collaboration.',
@@ -101,16 +104,29 @@ export default function Education() {
                               <p key={j}>{d}</p>
                             ))}
                           </div>
-                          {entry.certificate && (
-                            <a
-                              href={entry.certificate}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-sm text-gray-500 underline hover:text-black transition-colors mt-2 md:text-right"
-                            >
-                              View Certificate →
-                            </a>
-                          )}
+                          <div className="flex flex-wrap gap-x-4 gap-y-2 md:justify-end mt-2">
+                            {entry.links.map((link) => (
+                              <a
+                                key={link.url}
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sm text-gray-400 hover:text-black transition-colors"
+                              >
+                                {link.label} ↗
+                              </a>
+                            ))}
+                            {entry.certificate && (
+                              <a
+                                href={entry.certificate}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sm text-gray-500 underline hover:text-black transition-colors"
+                              >
+                                View Certificate →
+                              </a>
+                            )}
+                          </div>
                           <div className="mt-4 flex flex-wrap gap-3 md:justify-end">
                             {entry.tags.map((tag) => (
                               <span key={tag} className="px-3 py-1 border border-gray-100 rounded-full text-[9px] uppercase tracking-widest text-gray-500">
@@ -151,16 +167,29 @@ export default function Education() {
                               <p key={j}>{d}</p>
                             ))}
                           </div>
-                          {entry.certificate && (
-                            <a
-                              href={entry.certificate}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-sm text-gray-500 underline hover:text-black transition-colors mt-2"
-                            >
-                              View Certificate →
-                            </a>
-                          )}
+                          <div className="flex flex-wrap gap-x-4 gap-y-2 mt-2">
+                            {entry.links.map((link) => (
+                              <a
+                                key={link.url}
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sm text-gray-400 hover:text-black transition-colors"
+                              >
+                                {link.label} ↗
+                              </a>
+                            ))}
+                            {entry.certificate && (
+                              <a
+                                href={entry.certificate}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sm text-gray-500 underline hover:text-black transition-colors"
+                              >
+                                View Certificate →
+                              </a>
+                            )}
+                          </div>
                           <div className="mt-4 flex flex-wrap gap-3">
                             {entry.tags.map((tag) => (
                               <span key={tag} className="px-3 py-1 border border-gray-100 rounded-full text-[9px] uppercase tracking-widest text-gray-500">

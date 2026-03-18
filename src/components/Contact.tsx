@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { useRef, useState, type FormEvent } from 'react';
+import emailjs from '@emailjs/browser';
 
 const socialLinks = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/haile-melaku/' },
@@ -8,13 +10,47 @@ const socialLinks = [
 ];
 
 export default function Contact() {
+  const form = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const sendEmail = (e: FormEvent) => {
+    e.preventDefault();
+
+    if (!form.current) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_id',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_id',
+        form.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'public_key'
+      )
+      .then(
+        () => {
+          setSubmitStatus('success');
+          form.current?.reset();
+        },
+        (error) => {
+          console.error('EmailJS Error:', error);
+          setSubmitStatus('error');
+        }
+      )
+      .finally(() => {
+        setIsSubmitting(false);
+      });
+  };
+
   return (
     <section id="contact" className="relative min-h-screen flex flex-col px-6 md:px-24 pt-48 pb-24 overflow-hidden bg-abstract-gradient">
       {/* Sidebar */}
       <aside className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center justify-between h-3/4 py-12 text-[10px] uppercase tracking-[0.3em] text-gray-400">
-        <div className="vertical-text">Direct Connection Hub</div>
+        <div className="vertical-text">Let's Connect</div>
         <div className="h-24 w-px bg-gray-200" />
-        <div className="vertical-text">2024</div>
+        <div className="vertical-text">2026</div>
       </aside>
 
       <div className="max-w-7xl w-full mx-auto">
@@ -43,7 +79,7 @@ export default function Contact() {
             transition={{ duration: 0.7, delay: 0.1 }}
           >
             <h2 className="text-xs uppercase tracking-[0.2em] text-gray-500 font-semibold">Send a message</h2>
-            <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+            <form ref={form} className="space-y-8" onSubmit={sendEmail}>
               <div className="group relative border-b border-gray-200 focus-within:border-black transition-colors py-2">
                 <label className="block text-[10px] uppercase tracking-widest text-gray-400 mb-1" htmlFor="contact-name">
                   Full Name
@@ -80,12 +116,26 @@ export default function Contact() {
                   rows={3}
                 />
               </div>
-              <button
-                className="bg-black text-white px-10 py-4 text-sm uppercase tracking-widest hover:bg-neutral-800 transition-colors cursor-pointer"
-                type="submit"
-              >
-                Send Inquiry
-              </button>
+              <div className="flex flex-col gap-4">
+                <button
+                  className="bg-black text-white px-10 py-4 text-sm uppercase tracking-widest hover:bg-neutral-800 transition-colors cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Inquiry'}
+                </button>
+
+                {submitStatus === 'success' && (
+                  <p className="text-green-600 text-sm font-light">
+                    Message sent successfully! I'll get back to you soon.
+                  </p>
+                )}
+                {submitStatus === 'error' && (
+                  <p className="text-red-600 text-sm font-light">
+                    Something went wrong. Please try again or email me directly at 0hailemelaku@gmail.com.
+                  </p>
+                )}
+              </div>
             </form>
           </motion.div>
 

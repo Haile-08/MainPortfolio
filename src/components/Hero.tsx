@@ -12,7 +12,7 @@ export default function Hero() {
       <aside className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center justify-between h-3/4 py-12 text-[10px] uppercase tracking-[0.3em] text-gray-400">
         <div className="vertical-text">Full Stack Engineer</div>
         <div className="h-24 w-px bg-gray-200" />
-        <div className="vertical-text">2024</div>
+        <div className="vertical-text">2026</div>
       </aside>
 
       <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

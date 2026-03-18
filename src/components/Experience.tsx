@@ -77,9 +77,9 @@ export default function Experience() {
     <section id="experience" className="relative min-h-screen px-6 md:px-24 pt-32 pb-24 bg-abstract-gradient">
       {/* Sidebar */}
       <aside className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center justify-between h-3/4 py-12 text-[10px] uppercase tracking-[0.3em] text-gray-400">
-        <div className="vertical-text">Professional Path</div>
+        <div className="vertical-text">Profession Path</div>
         <div className="h-24 w-px bg-gray-200" />
-        <div className="vertical-text">Curriculum Vitae</div>
+        <div className="vertical-text">Profession Path</div>
       </aside>
 
       <div className="max-w-5xl mx-auto relative">

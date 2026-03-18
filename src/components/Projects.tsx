@@ -16,7 +16,7 @@ const projects: Project[] = [
     role: 'Full Stack Developer',
     year: '2026',
     bullets: [
-      'Designed and developed a responsive, single-page web application using Laravel, Vue.js, and Inertia.js for a seamless user experience.',
+      'Using the koltin tech stack I designed and developed a responsive, single-page web application using Laravel, Vue.js, and Inertia.js for a seamless user experience.',
       'Architected a community-driven platform that enables movie enthusiasts to publish, share, and engage with film reviews and opinions.',
     ],
     tech: ['Laravel', 'Vue.js', 'Inertia.js', 'MySQL'],

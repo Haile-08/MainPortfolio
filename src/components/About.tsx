@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function About() {
   return (
-    <section id="about" className="relative flex flex-col lg:flex-row items-stretch border-b border-gray-100">
+    <section id="about" className="relative flex flex-col lg:flex-row items-stretch border-b border-gray-100 min-h-screen">
       {/* Left */}
       <div className="w-full lg:w-3/5 flex items-center px-6 md:px-24 pt-32 pb-12 bg-white">
         <div className="max-w-4xl">
@@ -13,7 +13,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Chapter One / The Beginning
+            Get to know me / intro
           </motion.span>
           <motion.h2
             className="milestone-heading font-extrabold text-black uppercase"
@@ -49,7 +49,7 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <h3 className="text-xs font-black uppercase tracking-widest mb-4">The Narrative</h3>
+          <h3 className="text-xs font-black uppercase tracking-widest mb-4">Profile</h3>
           <p className="text-lg leading-relaxed text-gray-700 font-light mb-8 italic">
             A down-to-earth and endlessly curious professional who loves learning fast and delivering faster. I pride
             myself on being quick on my feet and highly adaptable, specializing in speeding up workflows without ever
