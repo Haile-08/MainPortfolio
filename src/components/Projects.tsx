@@ -24,7 +24,7 @@ const projects: Project[] = [
     ],
     tech: ['Laravel', 'Vue.js', 'Inertia.js', 'MySQL'],
     banner: ourtakeoneBanner,
-    demo: 'https://thereviewbar-production-037d.up.railway.app/',
+    demo: 'https://thereviewbar-production-5e7d.up.railway.app/',
     github: 'https://github.com/Haile-08/TheReviewBar',
   },
   {
