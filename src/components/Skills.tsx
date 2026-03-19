@@ -9,31 +9,31 @@ interface SkillCategory {
 
 const categories: SkillCategory[] = [
   {
-    label: 'Category 01',
+    label: '01',
     number: '01',
     title: 'Frontend',
     items: ['React.js', 'Redux', 'Vue.js', 'Tailwind CSS', 'UI/UX Implementation'],
   },
   {
-    label: 'Category 02',
+    label: '02',
     number: '02',
     title: 'Backend',
     items: ['Node.js / Express.js', 'MongoDB', 'MySQL', 'SQLAlchemy ORM', 'Laravel', 'Flask'],
   },
   {
-    label: 'Category 03',
+    label: '03',
     number: '03',
     title: 'Languages',
     items: ['TypeScript / JavaScript', 'C', 'Python'],
   },
   {
-    label: 'Category 04',
+    label: '04',
     number: '04',
     title: 'DevOps',
     items: ['Nginx', 'Docker', 'DigitalOcean', 'CI/CD Pipelines', 'HAProxy', 'System Design'],
   },
   {
-    label: 'Category 05',
+    label: '05',
     number: '05',
     title: 'Soft Skills',
     items: [
@@ -45,7 +45,7 @@ const categories: SkillCategory[] = [
     ],
   },
   {
-    label: 'Category 06',
+    label: '06',
     number: '06',
     title: 'Tools',
     items: [

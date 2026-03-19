@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import resumeFile from '../assets/resume.pdf';
 
@@ -7,25 +8,37 @@ interface ExperienceEntry {
   company: string;
   location: string;
   link?: string;
+  links?: { label: string; url: string }[];
   bullets: string[];
 }
 
 const experiences: ExperienceEntry[] = [
   {
-    period: '2025 — Present',
-    title: 'Full Stack Software Engineer',
-    company: 'Atend SaaS Startup',
-    location: 'Mexico | Remote',
+    period: '07/2025',
+    title: 'Full stack developer',
+    company: 'Carecentral',
+    location: 'Mexico (Remote)',
     link: 'https://cuidado.atend.mx/',
+    links: [{ label: 'Youtube Demo', url: 'https://youtu.be/5qc2IJpZGx0' }],
     bullets: [
       'Architected and developed a multi-tenant healthcare SaaS platform from the ground up, designing the UI in Figma and building the frontend in React.js to allow diverse organizations to customize branding and toggle features.',
       'Engineered an offline-first Flutter mobile app (iOS/Android) for nurses operating in low-connectivity areas, featuring automated background syncing and offline location tracking to ensure uninterrupted patient care.',
       'Designed a robust Express.js backend and optimized MySQL database, implementing custom stored procedures and indexes to handle complex data relationships efficiently.',
       'Built a dynamic intervention scheduling system that automatically calculated nurse availability and blocked booked time slots/areas in real-time.',
       'Integrated Stripe Connect to enable seamless, tenant-specific payment processing across the platform.',
-      'Established zero-downtime CI/CD deployment pipelines on a DigitalOcean VPS using Nginx as a reverse proxy, ensuring continuous availability for users.',
-      'Standardized development workflows by implementing Git Flow for environment separation (dev, main, releases), writing comprehensive automated tests, and authoring full system documentation.',
       'Thrived in a fast-paced, customer-first environment, rapidly adapting to shifting requirements to deliver high-priority features on strict deadlines.',
+    ],
+  },
+  {
+    period: '08/2024 – 06/2025',
+    title: 'Full stack developer',
+    company: 'Atend',
+    location: 'Mexico (Remote)',
+    link: 'https://www.atend.mx/',
+    bullets: [
+      'Developed a secure invoice management platform that streamlines billing by allowing administrators to upload documents and providing clients with self-service login access to download their invoices.',
+      'Modernized a legacy healthcare operations system by building an upgraded platform for administrators to efficiently manage service catalogs, client accounts, and patient records.',
+      'Executed the complete technical handover of the system upon its acquisition, migrating the legacy codebase and operational database to the new owner\'s server infrastructure.',
     ],
   },
   {
@@ -34,6 +47,7 @@ const experiences: ExperienceEntry[] = [
     company: 'Redjebena Startup',
     location: 'Addis Ababa, Ethiopia | ALX Accelerator',
     link: 'http://redjebena.et/',
+    links: [{ label: 'Youtube Demo', url: 'https://youtu.be/GsIr_OHfCRE' }],
     bullets: [
       'Founded and developed Redjebena, securing a spot in the ALX Accelerator from a pool of 400 startups.',
       'Directed the product development lifecycle, overseeing 2 engineers to build and deploy the MVP within a 3-month deadline.',
@@ -46,6 +60,10 @@ const experiences: ExperienceEntry[] = [
     title: 'Full Stack Developer',
     company: 'Gig Work',
     location: 'Addis Ababa, Ethiopia',
+    links: [
+      { label: 'Dragon Tower', url: 'https://dragon-tower-v2.vercel.app/' },
+      { label: 'Crash', url: 'https://crash-jkdv.vercel.app/' },
+    ],
     bullets: [
       'Developed a full-stack e-commerce gift shop utilizing the MERN stack (MongoDB, Express.js, React, Node.js), handling both frontend UI and backend logic.',
       'Engineered secure transaction flows by integrating local Ethiopian payment gateways, specifically Chapa and Telebirr, across multiple client applications.',
@@ -157,6 +175,20 @@ export default function Experience() {
                     </a>
                   </>
                 )}
+                {exp.links &&
+                  exp.links.map((lnk, idx) => (
+                    <React.Fragment key={idx}>
+                      <span className="text-gray-300">·</span>
+                      <a
+                        href={lnk.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-gray-500 underline hover:text-black transition-colors"
+                      >
+                        {lnk.label} →
+                      </a>
+                    </React.Fragment>
+                  ))}
               </div>
 
               {/* Bullets */}

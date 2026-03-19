@@ -62,7 +62,7 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <h1 className="section-heading font-light">Conatct</h1>
+          <h1 className="section-heading font-light">Contact</h1>
           <p className="text-xl md:text-2xl font-light text-gray-600 mt-4 flex items-center gap-4">
             <span className="w-8 h-px bg-gray-400" />
             Let's collaborate on your next big idea

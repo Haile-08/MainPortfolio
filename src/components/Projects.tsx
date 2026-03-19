@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import airbnbBanner from '../assets/airbnb.png';
+import ourtakeoneBanner from '../assets/ourtakeone.png';
 
 interface Project {
   title: string;
@@ -6,6 +8,7 @@ interface Project {
   year: string;
   bullets: string[];
   tech: string[];
+  banner: string;
   github?: string;
   demo?: string;
 }
@@ -20,7 +23,8 @@ const projects: Project[] = [
       'Architected a community-driven platform that enables movie enthusiasts to publish, share, and engage with film reviews and opinions.',
     ],
     tech: ['Laravel', 'Vue.js', 'Inertia.js', 'MySQL'],
-    demo: 'https://ourtakeone.onrender.com/',
+    banner: ourtakeoneBanner,
+    demo: 'https://thereviewbar-production-037d.up.railway.app/',
     github: 'https://github.com/Haile-08/TheReviewBar',
   },
   {
@@ -33,6 +37,7 @@ const projects: Project[] = [
       'Developed and delivered this application as a core software engineering project during training at Holberton School.',
     ],
     tech: ['Python', 'Flask', 'CSS', 'MySQL'],
+    banner: airbnbBanner,
     github: 'https://github.com/Haile-08/AirBnB_clone',
   },
 ];
@@ -80,8 +85,13 @@ export default function Projects() {
               viewport={{ once: true, margin: '-80px' }}
             >
               {/* Color block placeholder */}
-              <div className="relative overflow-hidden mb-8 aspect-video bg-gray-50 border border-gray-200 flex items-center justify-center">
-                <span className="text-6xl font-light text-gray-200 select-none">{project.title.charAt(0)}</span>
+              <div className="relative overflow-hidden mb-8 aspect-video border border-gray-200">
+                <img
+                  src={project.banner}
+                  alt={`${project.title} banner`}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 via-gray-700/30 to-gray-200/35" />
               </div>
 
               <div className="flex-grow">
