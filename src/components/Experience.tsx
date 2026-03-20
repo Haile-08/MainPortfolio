@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import resumeFile from '../assets/resume.pdf';
 import carecentralScreen from '../assets/carecentral.png';
-import atendScreen from '../assets/atend.png';
+import atendScreen from '../assets/clients.png';
 
 interface ExperienceEntry {
   period: string;
