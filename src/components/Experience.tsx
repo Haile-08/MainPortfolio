@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import resumeFile from '../assets/resume.pdf';
+import carecentralScreen from '../assets/carecentral.png';
+import atendScreen from '../assets/atend.png';
 
 interface ExperienceEntry {
   period: string;
@@ -10,6 +12,7 @@ interface ExperienceEntry {
   link?: string;
   links?: { label: string; url: string }[];
   bullets: string[];
+  banner?: string;
 }
 
 const experiences: ExperienceEntry[] = [
@@ -28,6 +31,7 @@ const experiences: ExperienceEntry[] = [
       'Integrated Stripe Connect to enable seamless, tenant-specific payment processing across the platform.',
       'Thrived in a fast-paced, customer-first environment, rapidly adapting to shifting requirements to deliver high-priority features on strict deadlines.',
     ],
+    banner: carecentralScreen,
   },
   {
     period: '08/2024 – 06/2025',
@@ -40,6 +44,7 @@ const experiences: ExperienceEntry[] = [
       'Modernized a legacy healthcare operations system by building an upgraded platform for administrators to efficiently manage service catalogs, client accounts, and patient records.',
       'Executed the complete technical handover of the system upon its acquisition, migrating the legacy codebase and operational database to the new owner\'s server infrastructure.',
     ],
+    banner: atendScreen,
   },
   {
     period: '04/2025 — 07/2025',
@@ -92,7 +97,10 @@ const itemVariants = {
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative min-h-screen px-6 md:px-24 pt-32 pb-24 bg-abstract-gradient">
+    <section
+      id="experience"
+      className="relative min-h-screen px-5 sm:px-6 md:px-24 pt-24 sm:pt-28 md:pt-32 pb-20 sm:pb-24 bg-abstract-gradient"
+    >
       {/* Sidebar */}
       <aside className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center justify-between h-3/4 py-12 text-[10px] uppercase tracking-[0.3em] text-gray-400">
         <div className="vertical-text">Profession Path</div>
@@ -102,7 +110,7 @@ export default function Experience() {
 
       <div className="max-w-5xl mx-auto relative">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 sm:mb-24 gap-6 sm:gap-8">
           <motion.div
             className="max-w-2xl"
             initial={{ opacity: 0, y: 30 }}
@@ -111,14 +119,14 @@ export default function Experience() {
             transition={{ duration: 0.7 }}
           >
             <h1 className="section-heading font-light mb-6">Experience</h1>
-            <p className="text-xl md:text-2xl font-light text-gray-600 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl font-light text-gray-600 leading-relaxed">
               Building high-performance digital systems, leading engineering teams, and scaling products from zero to
               production.
             </p>
           </motion.div>
 
           <motion.div
-            className="flex flex-col items-start md:items-end"
+            className="flex flex-col items-start md:items-end w-full md:w-auto"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -127,18 +135,18 @@ export default function Experience() {
             <a
               href={resumeFile}
               download="Haile_Resume.pdf"
-              className="group flex items-center gap-3 bg-neutral-dark text-white px-6 py-4 rounded-full text-sm font-medium hover:bg-gray-800 transition-all"
+              className="group flex w-full md:w-auto items-center justify-center gap-3 bg-neutral-dark text-white px-6 py-4 rounded-full text-sm font-medium hover:bg-gray-800 transition-all"
             >
               <span className="material-symbols-outlined text-xl">download</span>
               Download Resume
             </a>
-            <span className="text-[10px] uppercase tracking-widest text-gray-400 mt-3 mr-2">PDF VERSION (2.4MB)</span>
+            <span className="text-[10px] uppercase tracking-widest text-gray-400 mt-3 md:mr-2">PDF VERSION (2.4MB)</span>
           </motion.div>
         </div>
 
         {/* Timeline */}
         <motion.div
-          className="relative pl-8 md:pl-16"
+          className="relative pl-6 sm:pl-8 md:pl-16"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -147,19 +155,22 @@ export default function Experience() {
           <div className="timeline-line" />
 
           {experiences.map((exp, i) => (
-            <motion.div key={i} className="relative mb-24 last:mb-0" variants={itemVariants}>
+            <motion.div key={i} className="relative mb-16 sm:mb-20 md:mb-24 last:mb-0" variants={itemVariants}>
               {/* Dot */}
-              <div className="absolute -left-8 md:-left-16 w-3 h-3 bg-white border border-neutral-dark rounded-full mt-2 -ml-[5.5px] z-10" style={{ borderColor: '#1a1a1a' }} />
+              <div
+                className="absolute -left-6 sm:-left-8 md:-left-16 w-3 h-3 bg-white border border-neutral-dark rounded-full mt-2 -translate-x-1/2 z-10"
+                style={{ borderColor: '#1a1a1a' }}
+              />
 
               {/* Date & Title */}
               <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 mb-4">
                 <span className="text-sm font-semibold tracking-tighter text-gray-400 uppercase">{exp.period}</span>
-                <h3 className="text-3xl font-light">{exp.title}</h3>
+                <h3 className="text-2xl sm:text-3xl font-light">{exp.title}</h3>
               </div>
 
               {/* Company info */}
               <div className="flex flex-wrap items-center gap-3 mb-6">
-                <span className="text-lg text-gray-600">{exp.company}</span>
+                <span className="text-base sm:text-lg text-gray-600">{exp.company}</span>
                 <span className="text-gray-300">·</span>
                 <span className="text-sm text-gray-500">{exp.location}</span>
                 {exp.link && (
@@ -191,8 +202,16 @@ export default function Experience() {
                   ))}
               </div>
 
+              {/* Banner */}
+              {exp.banner && (
+                <div className="relative overflow-hidden mb-8 aspect-video border border-gray-200 bg-white">
+                  <img src={exp.banner} alt={`${exp.company} screen`} className="h-full w-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-gray-700/20 to-transparent" />
+                </div>
+              )}
+
               {/* Bullets */}
-              <ul className="space-y-4 text-gray-500">
+              <ul className="space-y-4 text-gray-500 text-sm sm:text-base">
                 {exp.bullets.map((bullet, j) => (
                   <li key={j} className="flex items-start gap-4">
                     <span className="w-1.5 h-1.5 bg-gray-300 rounded-full mt-2 flex-shrink-0" />

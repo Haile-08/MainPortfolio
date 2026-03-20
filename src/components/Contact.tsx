@@ -197,11 +197,6 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
-
-      {/* Availability tag */}
-      <div className="absolute bottom-12 left-6 md:left-24 flex items-center gap-3 text-xs uppercase tracking-widest text-gray-400">
-        <span>Availability: Open for new projects</span>
-      </div>
     </section>
   );
 }
