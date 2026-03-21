@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import resumeFile from '../assets/resume.pdf';
 import carecentralScreen from '../assets/carecentral.png';
 import atendScreen from '../assets/clients.png';
+import client1Image from '../assets/client1.png';
 
 interface ExperienceEntry {
   period: string;
@@ -13,6 +14,7 @@ interface ExperienceEntry {
   links?: { label: string; url: string }[];
   bullets: string[];
   banner?: string;
+  extraBanners?: { src: string; alt: string }[];
 }
 
 const experiences: ExperienceEntry[] = [
@@ -45,6 +47,7 @@ const experiences: ExperienceEntry[] = [
       'Executed the complete technical handover of the system upon its acquisition, migrating the legacy codebase and operational database to the new owner\'s server infrastructure.',
     ],
     banner: atendScreen,
+    extraBanners: [{ src: client1Image, alt: 'Client 1' }],
   },
   {
     period: '04/2025 — 07/2025',
@@ -203,10 +206,23 @@ export default function Experience() {
               </div>
 
               {/* Banner */}
-              {exp.banner && (
-                <div className="relative overflow-hidden mb-8 aspect-video border border-gray-200 bg-white">
-                  <img src={exp.banner} alt={`${exp.company} screen`} className="h-full w-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-gray-700/20 to-transparent" />
+              {(exp.banner || exp.extraBanners?.length) && (
+                <div className="mb-8 space-y-4">
+                  {exp.banner && (
+                    <div className="relative overflow-hidden aspect-video border border-gray-200 bg-white">
+                      <img src={exp.banner} alt={`${exp.company} screen`} className="h-full w-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-gray-700/20 to-transparent" />
+                    </div>
+                  )}
+                  {exp.extraBanners?.map((banner, idx) => (
+                    <div
+                      key={idx}
+                      className="relative overflow-hidden aspect-video border border-gray-200 bg-white"
+                    >
+                      <img src={banner.src} alt={banner.alt} className="h-full w-full object-cover" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-gray-700/20 to-transparent" />
+                    </div>
+                  ))}
                 </div>
               )}
 
